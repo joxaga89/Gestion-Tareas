@@ -1,1 +1,30 @@
-<p>tarea-list works!</p>
+<div class="container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Completado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let tarea of tareas">
+            <tr>
+                <td>{{ tarea.id }}</td>
+                <td>{{ tarea.titulo }}</td>
+                <td>{{ tarea.descripcion }}</td>
+                <td><input type="checkbox" [checked]="tarea.completado" disabled></td>
+                <td>
+                    <button class="btn btn-sm btn-info" routerLink="/tareas/{{tarea.id}}/edit">Actualizar</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-danger" (click)="eliminarTarea(tarea.id)">Eliminar</button>
+                </td>
+        </tbody>
+    </table>
+    <div class="mt-3">
+        <a routerLink="/tareas/new" class="btn btn-success">
+            Agregar tarea
+        </a>
+    </div>
+</div>

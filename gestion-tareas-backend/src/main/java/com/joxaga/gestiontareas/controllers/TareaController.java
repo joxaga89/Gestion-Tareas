@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/tareas")
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.OPTIONS})
+@CrossOrigin("*")
 
 public class TareaController {
 
