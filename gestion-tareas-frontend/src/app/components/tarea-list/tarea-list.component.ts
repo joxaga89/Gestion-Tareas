@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Tarea } from '../../models/tarea';
+import {  Tarea } from '../../models/tarea';
 import { TareaService } from '../../services/tarea.service';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RespuestaAPI } from '../../models/respuestaApi';
 
 @Component({
   selector: 'app-tarea-list',
@@ -13,6 +14,7 @@ import { RouterLink } from '@angular/router';
 })
 export class TareaListComponent {
   tareas?:Tarea[];
+  respuesta?: RespuestaAPI;
 
   constructor(private tareaService:TareaService){}
 
@@ -20,11 +22,11 @@ export class TareaListComponent {
     this.cargarTareas();
   }
 
-  cargarTareas():void{
-    this.tareaService.getAllTareas().subscribe(tareas => {
-      this.tareas = tareas;
-      console.log("tareas:" +tareas);
-    })
+  cargarTareas(): void {
+    this.tareaService.getAllTareas().subscribe((respuesta: RespuestaAPI) => {
+      this.tareas = respuesta.content; // Accede a la propiedad content
+      console.log(this.tareas)
+    });
   }
 
   eliminarTarea(id?:number):void{

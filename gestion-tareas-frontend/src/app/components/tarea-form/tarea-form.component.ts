@@ -12,8 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './tarea-form.component.css'
 })
 export class TareaFormComponent {
-  
-  tarea:Tarea = new Tarea();
+  tarea: Tarea = new Tarea;
 
   constructor(private tareaService:TareaService,private router:Router,private route:ActivatedRoute){}
 
@@ -22,6 +21,7 @@ export class TareaFormComponent {
     if(tareaId){
       this.tareaService.getTareaById(tareaId).subscribe(tarea => {
         this.tarea = tarea;
+        console.log(this.tarea);
       })
     }
   }

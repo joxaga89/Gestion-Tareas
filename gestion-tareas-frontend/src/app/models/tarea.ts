@@ -4,3 +4,4 @@ export class Tarea {
     descripcion?:string;
     completado?:boolean;
 }
+

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tarea } from '../models/tarea';
+import { RespuestaAPI } from '../models/respuestaApi';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class TareaService {
 
   constructor(private http:HttpClient) { }
 
-  getAllTareas():Observable<Tarea[]>{
-    return this.http.get<Tarea[]>(this.baseUrl);
+  getAllTareas(): Observable<RespuestaAPI> {
+    return this.http.get<RespuestaAPI>(this.baseUrl);
   }
 
   getTareaById(id:number):Observable<Tarea>{
