@@ -32,8 +32,8 @@ export class TareaFormComponent {
       this.tareaService.updateTarea(this.tarea.id,this.tarea).subscribe(updateTarea => {
         this.snackBar.open('¡Tarea actualizada con éxito!', 'Cerrar', {
           duration: 3000, // Duración en milisegundos
-          horizontalPosition: 'right', // Posición horizontal
-          verticalPosition: 'top', // Posición vertical
+          horizontalPosition: 'center', // Posición horizontal
+          verticalPosition: 'bottom', // Posición vertical
         });
         this.router.navigate(['/tareas']);
       })
@@ -41,8 +41,8 @@ export class TareaFormComponent {
       this.tareaService.createTarea(this.tarea).subscribe(savedTarea => {
         this.snackBar.open('¡Tarea guardada con éxito!', 'Cerrar', {
           duration: 3000, // Duración en milisegundos
-          horizontalPosition: 'right', // Posición horizontal
-          verticalPosition: 'top', // Posición vertical
+          horizontalPosition: 'center', // Posición horizontal
+          verticalPosition: 'bottom', // Posición vertical
         });
         this.router.navigate(['/tareas']);
       })

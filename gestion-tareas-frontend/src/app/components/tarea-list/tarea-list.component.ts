@@ -35,8 +35,8 @@ export class TareaListComponent {
     this.tareaService.deleteTarea(id!).subscribe(() => {
       this.snackBar.open('¡Tarea eliminada con éxito!', 'Cerrar', {
         duration: 3000, // Duración en milisegundos
-        horizontalPosition: 'right', // Posición horizontal
-        verticalPosition: 'top', // Posición vertical
+        horizontalPosition: 'center', // Posición horizontal
+        verticalPosition: 'bottom', // Posición vertical
       });
       this.cargarTareas();
     })
