@@ -4,11 +4,13 @@ import { TareaService } from '../../services/tarea.service';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { RespuestaAPI } from '../../models/respuestaApi';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-tarea-list',
   standalone: true,
-  imports: [NgFor,RouterLink],
+  imports: [NgFor,RouterLink,MatSnackBarModule],
   templateUrl: './tarea-list.component.html',
   styleUrl: './tarea-list.component.css'
 })
@@ -16,7 +18,7 @@ export class TareaListComponent {
   tareas?:Tarea[];
   respuesta?: RespuestaAPI;
 
-  constructor(private tareaService:TareaService){}
+  constructor(private tareaService:TareaService,private snackBar: MatSnackBar,){}
 
   ngOnInit():void{
     this.cargarTareas();
@@ -31,6 +33,11 @@ export class TareaListComponent {
 
   eliminarTarea(id?:number):void{
     this.tareaService.deleteTarea(id!).subscribe(() => {
+      this.snackBar.open('¡Tarea eliminada con éxito!', 'Cerrar', {
+        duration: 3000, // Duración en milisegundos
+        horizontalPosition: 'right', // Posición horizontal
+        verticalPosition: 'top', // Posición vertical
+      });
       this.cargarTareas();
     })
   }
